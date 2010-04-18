@@ -31,4 +31,46 @@ describe ActsAsDashboard::ClassMethods do
       end
     end
   end # }}}
+
+  describe '#dashboard_number' do # {{{
+    def call_dashboard_number
+      FoosController.instance_eval do
+        dashboard_number {}
+      end
+    end
+
+    before :each do
+      class FoosController < ApplicationController
+        acts_as_dashboard
+      end
+
+      @widget = ActsAsDashboard::Widget.new :type => :number
+
+      @widget.stub(:instance_eval)
+      ActsAsDashboard::Widget.stub(:new).and_return @widget
+    end
+
+    it "raises an error if a Proc isn't provided" do
+      Proc.new {
+        class FoosController
+          dashboard_number
+        end
+      }.should raise_error ArgumentError, 'A Proc must be given.'
+    end
+
+    it 'creates a "number" Widget' do
+      ActsAsDashboard::Widget.should_receive(:new).with(:type => :number).and_return @widget
+      call_dashboard_number
+    end
+
+    it 'evaluates the given Proc within the widget' do
+      @widget.should_receive :instance_eval
+      call_dashboard_number
+    end
+
+    it 'adds the widget to its configuration' do
+      FoosController.dashboard_config.should_receive(:add_widget).with(@widget).and_return [@widget]
+      call_dashboard_number
+    end
+  end # }}}
 end
