@@ -32,5 +32,14 @@ module ActsAsDashboard
       raise ArgumentError, 'The "update_interval" argument must be a Fixnum or String.' unless [Fixnum, String].include? update_interval.class
       @update_interval = update_interval
     end
+
+    def attributes
+      {
+        :type             => @type,
+        :name             => @name,
+        :title            => @title,
+        :update_interval  => @update_interval,
+      }
+    end
   end
 end

@@ -118,4 +118,10 @@ describe ActsAsDashboard::Widget do
       Proc.new {ActsAsDashboard::Widget.new.update_interval = :fail}.should raise_error ArgumentError, 'The "update_interval" argument must be a Fixnum or String.'
     end
   end # }}}
+
+  it 'returns its attributes' do
+    @options.delete :block    # Remove the "block" key because AAD::Widget#attributes doesn't return it on purpose.
+
+    ActsAsDashboard::Widget.new(@options).attributes.should == @options
+  end
 end
