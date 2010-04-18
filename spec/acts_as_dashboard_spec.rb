@@ -1,5 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require File.join File.dirname(__FILE__), 'spec_helper'
 
 describe ActsAsDashboard do
-  it 'does nothing yet'
+  it 'includes itself into classes that inherit from ActionController::Base' do
+    class FooController < ActionController::Base; end
+
+    FooController.included_modules.should include ActsAsDashboard
+  end
 end
