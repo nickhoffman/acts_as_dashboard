@@ -128,9 +128,35 @@ describe ActsAsDashboard::Widget do
     end
   end # }}}
 
-  it 'returns its attributes' do
-    @options.delete :block    # Remove the "block" key because AAD::Widget#attributes doesn't return it on purpose.
+  describe 'attributes' do # {{{
+    before :each do
+      @widget = ActsAsDashboard::Widget.new @options
+    end
 
-    ActsAsDashboard::Widget.new(@options).attributes.should == @options
-  end
+    it 'are returned in a Hash' do
+      @options.delete :block    # Remove the "block" key because AAD::Widget#attributes doesn't return it on purpose.
+
+      @widget.attributes.should == @options
+    end
+
+    it 'returns the "type" attribute' do
+      @widget.type.should equal @options[:type]
+    end
+
+    it 'returns the "name" attribute' do
+      @widget.name.should equal @options[:name]
+    end
+
+    it 'returns the "title" attribute' do
+      @widget.title.should == @options[:title]
+    end
+
+    it 'returns the "block" attribute' do
+      @widget.block.should equal @options[:block]
+    end
+
+    it 'returns the "update_interval" attribute' do
+      @widget.update_interval.should == @options[:update_interval]
+    end
+  end # }}}
 end

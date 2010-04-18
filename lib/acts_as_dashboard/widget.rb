@@ -1,5 +1,11 @@
 module ActsAsDashboard
   class Widget
+    attr_reader :type
+    attr_reader :name
+    attr_reader :title
+    attr_reader :block
+    attr_reader :update_interval
+
     def initialize(options = {})
       self.type             = options[:type]            if options[:type]
       self.name             = options[:name]            if options[:name]
