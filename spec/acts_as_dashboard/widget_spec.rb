@@ -56,7 +56,8 @@ describe ActsAsDashboard::Widget do
     end
 
     it 'raises an exception if given an invalid value' do
-      Proc.new {ActsAsDashboard::Widget.new.type = 'fail'}.should raise_error ArgumentError, 'The "type" argument must be a Symbol.'
+      Proc.new {ActsAsDashboard::Widget.new.type = 'fail'}.should raise_error ArgumentError,
+        'The "type" argument must be a Symbol.'
     end
   end # }}}
 
@@ -69,7 +70,8 @@ describe ActsAsDashboard::Widget do
     end
 
     it 'raises an exception if given an invalid value' do
-      Proc.new {ActsAsDashboard::Widget.new.name = 'fail'}.should raise_error ArgumentError, 'The "name" argument must be a Symbol.'
+      Proc.new {ActsAsDashboard::Widget.new.name = 'fail'}.should raise_error ArgumentError,
+        'The "name" argument must be a Symbol.'
     end
   end # }}}
 
@@ -82,7 +84,8 @@ describe ActsAsDashboard::Widget do
     end
 
     it 'raises an exception if given an invalid value' do
-      Proc.new {ActsAsDashboard::Widget.new.title = 123}.should raise_error ArgumentError, 'The "title" argument must be a String.'
+      Proc.new {ActsAsDashboard::Widget.new.title = 123}.should raise_error ArgumentError,
+        'The "title" argument must be a String.'
     end
   end # }}}
 
@@ -95,7 +98,8 @@ describe ActsAsDashboard::Widget do
     end
 
     it 'raises an exception if given an invalid value' do
-      Proc.new {ActsAsDashboard::Widget.new.block = 'fail'}.should raise_error ArgumentError, 'The "block" argument must be a Proc.'
+      Proc.new {ActsAsDashboard::Widget.new.block = 'fail'}.should raise_error ArgumentError,
+        'The "block" argument must be a Proc.'
     end
 
     it 'can be passed as a block' do
@@ -124,7 +128,8 @@ describe ActsAsDashboard::Widget do
     end
 
     it 'raises an exception if given an invalid value' do
-      Proc.new {ActsAsDashboard::Widget.new.update_interval = :fail}.should raise_error ArgumentError, 'The "update_interval" argument must be a Fixnum or String.'
+      Proc.new {ActsAsDashboard::Widget.new.update_interval = :fail}.should raise_error ArgumentError,
+        'The "update_interval" argument must be a Fixnum or String.'
     end
   end # }}}
 
