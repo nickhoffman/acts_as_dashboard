@@ -33,4 +33,25 @@ describe ActsAsDashboard::Config do
       @config.widgets.should == [widget]
     end
   end # }}}
+
+  describe 'finding a widget' do # {{{
+    before :each do
+      @config = ActsAsDashboard::Config.new
+    end
+
+    it 'raises an exception if given an invalid value' do
+      Proc.new {@config.find_widget nil}.should raise_error ArgumentError,
+        'The "name" argument must respond to #to_sym .'
+    end
+
+    it 'returns the widget with the given name' do
+      foo_widget = ActsAsDashboard::Widget.new :name => :foo
+      bar_widget = ActsAsDashboard::Widget.new :name => :bar
+
+      @config.add_widget foo_widget
+      @config.add_widget bar_widget
+
+      @config.find_widget(foo_widget.name).should equal foo_widget
+    end
+  end # }}}
 end
