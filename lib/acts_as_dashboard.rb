@@ -11,4 +11,7 @@ class ActionController::Base
 end
 
 module ActsAsDashboard
+  def self.included(base)
+    base.extend ClassMethods
+  end
 end
