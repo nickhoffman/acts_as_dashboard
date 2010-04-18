@@ -4,12 +4,13 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "acts_as_dashboard"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "nick@deadorange.com"
-    gem.homepage = "http://github.com/nickhoffman/acts_as_dashboard"
-    gem.authors = ["Nick Hoffman"]
+    gem.name        = "acts_as_dashboard"
+    gem.summary     = %Q{Create dashboards in Rails apps easily.}
+    gem.description = %Q{acts_as_dashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
+    gem.email       = "nick@deadorange.com"
+    gem.homepage    = "http://github.com/nickhoffman/acts_as_dashboard"
+    gem.authors     = ["Nick Hoffman"]
+
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
