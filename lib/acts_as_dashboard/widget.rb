@@ -28,6 +28,10 @@ module ActsAsDashboard
       @block = block
     end
 
+    def data(&block)
+      self.block = block
+    end
+
     def update_interval=(update_interval)
       raise ArgumentError, 'The "update_interval" argument must be a Fixnum or String.' unless [Fixnum, String].include? update_interval.class
       @update_interval = update_interval

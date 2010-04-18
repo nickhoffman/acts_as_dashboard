@@ -97,6 +97,15 @@ describe ActsAsDashboard::Widget do
     it 'raises an exception if given an invalid value' do
       Proc.new {ActsAsDashboard::Widget.new.block = 'fail'}.should raise_error ArgumentError, 'The "block" argument must be a Proc.'
     end
+
+    it 'can be passed as a block' do
+      w = ActsAsDashboard::Widget.new
+
+      w.instance_variable_get(:@block).should be_nil
+      w.data do; end
+
+      w.instance_variable_get(:@block).should be_a Proc
+    end
   end # }}}
 
   describe 'setting its "update_interval" attribute' do # {{{
