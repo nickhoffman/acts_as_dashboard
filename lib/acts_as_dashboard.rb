@@ -1,0 +1,2 @@
+module ActsAsDashboard
+end
