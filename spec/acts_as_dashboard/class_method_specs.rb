@@ -1,6 +1,14 @@
 require File.join File.dirname(__FILE__), '..', 'spec_helper'
 
 describe ActsAsDashboard::ClassMethods do
+  it 'makes its "dashboard_config" instance variable readable' do
+    class FoosController < ApplicationController
+      acts_as_dashboard
+    end
+
+    FoosController.dashboard_config.should be_a ActsAsDashboard::Config
+  end
+
   describe '#acts_as_dashboard' do # {{{
     before :each do
       @config = mock ActsAsDashboard::Config
