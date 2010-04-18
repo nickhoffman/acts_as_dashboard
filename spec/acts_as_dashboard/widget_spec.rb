@@ -47,8 +47,8 @@ describe ActsAsDashboard::Widget do
     end
   end # }}}
 
-  describe 'settings its "type" attribute' do # {{{
-    it 'is successful' do
+  describe 'setting its "type" attribute' do # {{{
+    it 'is successful when given a Symbol' do
       w       = ActsAsDashboard::Widget.new
       w.type  = @options[:type]
 
@@ -61,7 +61,7 @@ describe ActsAsDashboard::Widget do
   end # }}}
 
   describe 'setting its "name" attribute' do # {{{
-    it 'is successful' do
+    it 'is successful when given a Symbol' do
       w       = ActsAsDashboard::Widget.new
       w.name  = @options[:name]
 
@@ -73,8 +73,8 @@ describe ActsAsDashboard::Widget do
     end
   end # }}}
 
-  describe 'settings its "title" attribute' do # {{{
-    it 'is successful' do
+  describe 'setting its "title" attribute' do # {{{
+    it 'is successful when given a String' do
       w       = ActsAsDashboard::Widget.new
       w.title = @options[:title]
 
@@ -87,7 +87,7 @@ describe ActsAsDashboard::Widget do
   end # }}}
 
   describe 'setting its "block" attribute' do # {{{
-    it 'is successful' do
+    it 'is successful when given a Proc' do
       w       = ActsAsDashboard::Widget.new
       w.block = @options[:block]
 
