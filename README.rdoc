@@ -2,6 +2,12 @@
 
 acts_as_dashboard makes it dead easy to create dashboards in Rails apps.
 
+== To Do
+* Figure out how to configure a Rails app's Rakefile to use this gem's Rake tasks.
+* Fill in the "dashboard:install_javascript" Rake task.
+* Fill in the "dashboard:install_stylesheets" Rake task.
+* Fill in the "dashboard:install" Rake task.
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
