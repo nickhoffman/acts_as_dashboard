@@ -2,11 +2,11 @@ require File.join File.dirname(__FILE__), '..', 'spec_helper'
 
 describe ActsAsDashboard::ClassMethods do
   it 'makes its "dashboard_config" instance variable readable' do
-    class FoosController < ApplicationController
+    class DashboardsController < ApplicationController
       acts_as_dashboard
     end
 
-    FoosController.dashboard_config.should be_a ActsAsDashboard::Config
+    DashboardsController.dashboard_config.should be_a ActsAsDashboard::Config
   end
 
   describe '#acts_as_dashboard' do # {{{
@@ -15,32 +15,32 @@ describe ActsAsDashboard::ClassMethods do
       ActsAsDashboard::Config.stub(:new).and_return @config
     end
 
-    it 'includes ActsAsDashboard::InstanceMethods' do
-      class FoosController < ApplicationController
-        acts_as_dashboard
-      end
-
-      FoosController.included_modules.should include ActsAsDashboard::InstanceMethods
-    end
-
     it 'creates a Config object' do
       ActsAsDashboard::Config.should_receive(:new).and_return @config
 
-      class FoosController < ApplicationController
+      class DashboardsController < ApplicationController
         acts_as_dashboard
       end
+    end
+
+    it 'includes ActsAsDashboard::InstanceMethods' do
+      class DashboardsController < ApplicationController
+        acts_as_dashboard
+      end
+
+      DashboardsController.included_modules.should include ActsAsDashboard::InstanceMethods
     end
   end # }}}
 
   describe '#dashboard_number' do # {{{
     def call_dashboard_number
-      FoosController.instance_eval do
+      DashboardsController.instance_eval do
         dashboard_number {}
       end
     end
 
     before :each do
-      class FoosController < ApplicationController
+      class DashboardsController < ApplicationController
         acts_as_dashboard
       end
 
@@ -52,7 +52,7 @@ describe ActsAsDashboard::ClassMethods do
 
     it "raises an error if a Proc isn't provided" do
       Proc.new {
-        class FoosController
+        class DashboardsController
           dashboard_number
         end
       }.should raise_error ArgumentError, 'A Proc must be given.'
@@ -69,7 +69,7 @@ describe ActsAsDashboard::ClassMethods do
     end
 
     it 'adds the widget to its configuration' do
-      FoosController.dashboard_config.should_receive(:add_widget).with(@widget).and_return [@widget]
+      DashboardsController.dashboard_config.should_receive(:add_widget).with(@widget).and_return [@widget]
       call_dashboard_number
     end
   end # }}}
