@@ -3,7 +3,7 @@ module ActsAsDashboard
     def show
       @widget_names = dashboard_config.widgets.map {|w| w.name}.join ', '
 
-      render :file => File.join(File.dirname(__FILE__), 'app', 'views', 'dashboards', 'show.haml')
+      render :file => File.join(File.dirname(__FILE__), 'app', 'views', 'dashboards', 'show.html.erb')
     end
   end
 
