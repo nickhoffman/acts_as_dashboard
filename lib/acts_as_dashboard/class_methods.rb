@@ -6,6 +6,12 @@ module ActsAsDashboard
       @dashboard_config = ActsAsDashboard::Config.new
 
       include InstanceMethods
+
+      controller_name = self.to_s.underscore.sub('_controller', '').singularize.to_sym
+
+      ActionController::Routing::Routes.draw do |map|
+        map.resource  controller_name, :only => :show
+      end
     end
 
     def dashboard_number(&block)
