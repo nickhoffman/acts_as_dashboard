@@ -4,6 +4,52 @@
 
 acts_as_dashboard makes it dead easy to create dashboards in Rails apps.
 
+== Usage
+
+Create a controller to use as a dashboard. Eg:
+
+  class DashboardsController < ApplicationController
+    acts_as_dashboard
+  end
+
+Add some "number" widgets to the dashboard. Eg:
+
+  class DashboardsController < ApplicationController
+    acts_as_dashboard
+
+    dashboard_number do |d|
+      d.name            = :this_minutes_seconds
+      d.title           = 'Seconds in this minute'
+      d.update_interval = '5s'
+      d.data            {Time.now.sec}
+    end
+
+    dashboard_number do |d|
+      d.name            = :load_average
+      d.title           = 'Load average'
+      d.update_interval = '5s'
+
+      d.data do
+        uptime = `uptime`.strip
+
+        load_average = uptime.match(/load average: ([^,]+)/).captures.first
+
+        load_average
+      end
+    end
+
+Create some routes in config/routes.rb . Eg:
+
+  ActionController::Routing::Routes.draw do |map|
+    map.resource  :dashboard, :only => :show
+    map.connect   "dashboard/widgets/*path", :controller => :dashboards, :action => 'widget_data'
+  end
+
+Fire up your web server. Eg:
+  $ script/server
+
+Browse on over to http://localhost:3000/dashboard
+
 == To Do
 
 * Figure out how to configure a Rails app's Rakefile to use this gem's Rake tasks.
@@ -15,7 +61,7 @@ acts_as_dashboard makes it dead easy to create dashboards in Rails apps.
 * Make the "show" view template sexy.
 * Add more widget types.
 
-== Note on Patches/Pull Requests
+== Note On Patches/Pull Requests
  
 * Fork the project.
 * Make your feature addition or bug fix.
