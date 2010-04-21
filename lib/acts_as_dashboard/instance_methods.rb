@@ -1,7 +1,13 @@
 module ActsAsDashboard
   module InstanceMethods
     def show
-      @widget_names = dashboard_config.widgets.map {|w| w.name}.join ', '
+      @json_widgets       = dashboard_config.widgets.map {|w| w.attributes}.to_json
+
+      @dashboard_css_path = File.join(File.dirname(__FILE__), 'public', 'stylesheets', 'dashboard.css')
+      @dashboard_css      = File.open(@dashboard_css_path).read
+
+      @dashboard_js_path  = File.join(File.dirname(__FILE__), 'public', 'javascripts', 'dashboard.js')
+      @dashboard_js       = File.open(@dashboard_js_path).read
 
       render :file => File.join(File.dirname(__FILE__), 'app', 'views', 'dashboards', 'show.html.erb')
     end

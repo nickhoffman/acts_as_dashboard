@@ -1,3 +1,19 @@
+<style type="text/css">
+  <%= @dashboard_css %>
+</style>
+
+<%= javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js' %>
+<%= javascript_include_tag 'http://plugins.jquery.com/files/jquery.timers-1.2.js.txt' %>
+
+<script type='text/javascript'>
+  <%= @dashboard_js %>
+</script>
+
+<script type='text/javascript'>
+  var json_widgets = '<%= @json_widgets -%>';
+</script>
+
 <div id='dashboard'>
-  <%= "Widgets: #{@widget_names}" %>
+  <div class='dashboard-numbers'></div>
+</div>
 

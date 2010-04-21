@@ -13,12 +13,10 @@ end
 describe DashboardsController, :type => :controller do
   describe 'GET "show"' do # {{{
     before :each do
-      @widget_name1 = 'widget_name1'
-      @widget_name2 = 'widget_name2'
-      @widget1      = mock ActsAsDashboard::Widget, :name => @widget_name1
-      @widget2      = mock ActsAsDashboard::Widget, :name => @widget_name2
-      @widgets      = [@widget1, @widget2]
-      @config       = mock ActsAsDashboard::Config, :widgets => @widgets
+      @widget_attributes  = {:name => :some_name, :title => 'Some Title', :update_interval => '10s', :type => :number}
+      @json               = '[{"type":"number","title":"Some Title","name":"some_name","update_interval":"10s"}]'
+      @widget             = mock ActsAsDashboard::Widget, :attributes => @widget_attributes
+      @config             = mock ActsAsDashboard::Config, :widgets => [@widget]
 
       controller.stub(:dashboard_config).and_return @config
       controller.stub(:render)
@@ -29,9 +27,49 @@ describe DashboardsController, :type => :controller do
       get :show
     end
 
-    it 'assigns @widgets as a String of widget names' do
+    it "grabs each widget's attributes" do
+      @widget.should_receive(:attributes).and_return @widget_attributes
       get :show
-      assigns[:widget_names].should == "#{@widget_name1}, #{@widget_name2}"
+    end
+
+    it "converts each widget's attributes to JSON" do
+      @widget_attributes.should_receive(:to_json).and_return @json
+      get :show
+    end
+
+    it 'assigns @json_widgets as a String of widget attributes in JSON' do
+      get :show
+      assigns[:json_widgets].should == @json
+    end
+
+    it 'assigns @dashboard_css_path as the path to the CSS script' do
+      get :show
+
+      assigns[:dashboard_css_path].should == File.expand_path(File.join(
+        File.dirname(__FILE__), '..', '..', 'lib', 'acts_as_dashboard', 'public', 'stylesheets', 'dashboard.css'
+      ))
+    end
+
+    it 'assigns @dashboard_css as the CSS for the dashboard' do
+      get :show
+
+      css_file = File.join File.dirname(__FILE__), '..', '..', 'lib', 'acts_as_dashboard', 'public', 'stylesheets', 'dashboard.css'
+      assigns[:dashboard_css].should == File.open(css_file).read
+    end
+
+    it 'assigns @dashboard_js_path as the path to the JavaScript script' do
+      get :show
+
+      assigns[:dashboard_js_path].should == File.expand_path(File.join(
+        File.dirname(__FILE__), '..', '..', 'lib', 'acts_as_dashboard', 'public', 'javascripts', 'dashboard.js'
+      ))
+    end
+
+    it 'assigns @dashboard_js_path as the JavaScript for the dashboard' do
+      get :show
+
+      js_file = File.join File.dirname(__FILE__), '..', '..', 'lib', 'acts_as_dashboard', 'public', 'javascripts', 'dashboard.js'
+      assigns[:dashboard_js].should == File.open(js_file).read
     end
 
     it 'renders the "show" view template within the gem' do
@@ -43,7 +81,7 @@ describe DashboardsController, :type => :controller do
     end
   end # }}}
 
-  describe 'GET /widget/returns_ten' do
+  describe 'GET /widget/returns_ten' do # {{{
     before :each do
       @widget_name  = 'returns_ten'
       @block        = Proc.new {10}
@@ -92,5 +130,5 @@ describe DashboardsController, :type => :controller do
         }.should raise_error ActsAsDashboard::WidgetNotFound, 'No widget named "returns_ten" found.'
       end
     end # }}}
-  end
+  end # }}}
 end
