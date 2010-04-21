@@ -17,19 +17,19 @@ Add some "number" widgets to the dashboard. Eg:
   class DashboardsController < ApplicationController
     acts_as_dashboard
 
-    dashboard_number do |d|
-      d.name            = :this_minutes_seconds
-      d.title           = 'Seconds in this minute'
-      d.update_interval = '5s'
-      d.data            {Time.now.sec}
+    dashboard_number do |dn|
+      dn.name            = :this_minutes_seconds
+      dn.title           = 'Seconds in this minute'
+      dn.update_interval = '5s'
+      dn.data            {Time.now.sec}
     end
 
-    dashboard_number do |d|
-      d.name            = :load_average
-      d.title           = 'Load average'
-      d.update_interval = '5s'
+    dashboard_number do |dn|
+      dn.name            = :load_average
+      dn.title           = 'Load average'
+      dn.update_interval = '5s'
 
-      d.data do
+      dn.data do
         uptime        = `uptime`.strip
         load_average  = uptime.match(/load average: ([^,]+)/).captures.first
       end
