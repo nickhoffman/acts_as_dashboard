@@ -61,6 +61,10 @@ Browse on over to http://localhost:3000/dashboard
 * Make the "show" view template sexy.
 * Add more widget types.
 
+== Bugs
+
+* At the moment, if there's a single-quote (') in a widget's name, the JSON that is used to build the dashboard is invalid. This breaks all of the JavaScript functionality in the dashboard. This needs to be fixed in AAD::InstanceMethods#show .
+
 == Note On Patches/Pull Requests
  
 * Fork the project.
