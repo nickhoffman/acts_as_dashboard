@@ -1,12 +1,19 @@
 = acts_as_dashboard
 
+== Description
+
 acts_as_dashboard makes it dead easy to create dashboards in Rails apps.
 
 == To Do
+
 * Figure out how to configure a Rails app's Rakefile to use this gem's Rake tasks.
 * Fill in the "dashboard:install_javascript" Rake task.
 * Fill in the "dashboard:install_stylesheets" Rake task.
 * Fill in the "dashboard:install" Rake task.
+* Figure out how to create routes at run-time. (See lib/acts_as_dashboard/class_methods.rb)
+* Find a better way of embedding AAD's CSS and JavaScript files into the "show" view template. I don't like reading the files manually and passing their contents to the view template. That feels dirty.
+* Make the "show" view template sexy.
+* Add more widget types.
 
 == Note on Patches/Pull Requests
  
