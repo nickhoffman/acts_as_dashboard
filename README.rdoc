@@ -30,11 +30,8 @@ Add some "number" widgets to the dashboard. Eg:
       d.update_interval = '5s'
 
       d.data do
-        uptime = `uptime`.strip
-
-        load_average = uptime.match(/load average: ([^,]+)/).captures.first
-
-        load_average
+        uptime        = `uptime`.strip
+        load_average  = uptime.match(/load average: ([^,]+)/).captures.first
       end
     end
 
