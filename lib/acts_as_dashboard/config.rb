@@ -20,4 +20,6 @@ module ActsAsDashboard
       @widgets.find_all {|w| w.name == name.to_sym}.last
     end
   end
+
+  class WidgetNotFound < StandardError; end
 end

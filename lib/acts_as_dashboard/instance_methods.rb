@@ -7,6 +7,15 @@ module ActsAsDashboard
     end
   end
 
+  def widget_data
+    name    = params[:path].first
+    widget  = dashboard_config.find_widget name
+
+    raise WidgetNotFound, %Q(No widget named "#{name}" found.) if widget.nil?
+
+    render :text => widget.block.call
+  end
+
   protected
 
     # Make the ActsAsDashboard::Config instance variable easily accessible.
