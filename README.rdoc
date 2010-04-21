@@ -57,6 +57,7 @@ Browse on over to http://localhost:3000/dashboard
 * Find a better way of embedding AAD's CSS and JavaScript files into the "show" view template. I don't like reading the files manually and passing their contents to the view template. That feels dirty.
 * Make the "show" view template sexy.
 * Add more widget types.
+* If getting a new value for a widget fails, keep the last value, and mark the widget as failing.
 
 == Bugs
 
