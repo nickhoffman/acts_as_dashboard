@@ -4,16 +4,25 @@
 
 <%= javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js' %>
 <%= javascript_include_tag 'http://plugins.jquery.com/files/jquery.timers-1.2.js.txt' %>
+<%= javascript_include_tag 'js.class-2.1.4/min/core.js' %>
+<script type='text/javascript'>
+  jQuery(document).ready(function() {
+    dashboard     = new Dashboard({basePath: '<%= @dashboard_path -%>'});
+    json_widgets  = '<%= @json_widgets -%>';
+  });
+</script>
+<%= javascript_include_tag 'dashboard.js' %>
 
 <script type='text/javascript'>
   <%= @dashboard_js %>
 </script>
 
-<script type='text/javascript'>
-  var json_widgets = '<%= @json_widgets -%>';
-</script>
-
 <div id='dashboard'>
-  <div class='dashboard-numbers'></div>
+  <div class='dashboard-numbers'>
+    <div class='widget-template' style='display: none;'>
+      <div class="widget-title"></div>
+      <div class="widget-data"></div>
+    </div>
+  </div>
 </div>
 

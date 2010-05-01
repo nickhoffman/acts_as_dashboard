@@ -2,6 +2,7 @@ module ActsAsDashboard
   module InstanceMethods
     def show
       @json_widgets       = dashboard_config.widgets.map {|w| w.attributes}.to_json
+      @dashboard_path     = '/' + self.class.to_s.underscore.sub('_controller', '').singularize + '/widgets/'
 
       @dashboard_css_path = File.join(File.dirname(__FILE__), 'public', 'stylesheets', 'dashboard.css')
       @dashboard_css      = File.open(@dashboard_css_path).read
