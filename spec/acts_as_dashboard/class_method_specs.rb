@@ -73,4 +73,46 @@ describe ActsAsDashboard::ClassMethods do
       call_dashboard_number
     end
   end # }}}
+
+  describe '#dashboard_short_messages' do
+    def call_dashboard_short_messages
+      DashboardsController.instance_eval do
+        dashboard_short_messages {}
+      end
+    end
+
+    before :each do
+      class DashboardsController < ApplicationController
+        acts_as_dashboard
+      end
+
+      @widget = ActsAsDashboard::Widget.new :type => :short_messages
+
+      @widget.stub(:instance_eval)
+      ActsAsDashboard::Widget.stub(:new).and_return @widget
+    end
+
+    it "raises an error if a Proc isn't provided" do
+      Proc.new {
+        class DashboardsController
+          dashboard_short_messages
+        end
+      }.should raise_error ArgumentError, 'A Proc must be given.'
+    end
+
+    it 'creates a "short messages" Widget' do
+      ActsAsDashboard::Widget.should_receive(:new).with(:type => :short_messages).and_return @widget
+      call_dashboard_short_messages
+    end
+
+    it 'evaluates the given Proc within the widget' do
+      @widget.should_receive :instance_eval
+      call_dashboard_short_messages
+    end
+
+    it 'adds the widget to its configuration' do
+      DashboardsController.dashboard_config.should_receive(:add_widget).with(@widget).and_return [@widget]
+      call_dashboard_short_messages
+    end
+  end
 end
