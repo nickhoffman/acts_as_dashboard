@@ -31,15 +31,29 @@ body {
 
   /* dashboard-short-message is not complete */
   #dashboard .dashboard-short-messages {
-    width: 50%;
   }
-    #dashboard .dashboard-short-messages .short-message-widget {
-      border: 1px solid black;
+    #dashboard .dashboard-short-messages .short-messages-widget {
       float:  left;
+      margin: 1em;
     }
-      #dashboard .dashboard-short-messages .short-message-widget .widget-title {
-        padding-left: 1em;
+      #dashboard .dashboard-short-messages .short-messages-widget .widget-title {
+        border:       1px solid black;
+        padding:      0.5em;
+        text-align:   center;
+        font-weight:  bold;
       }
-      #dashboard .dashboard-short-messages .short-message-widget .widget-data {
-        padding-right:  1em;
+      #dashboard .dashboard-short-messages .short-messages-widget .widget-data {
+        margin:   0;
+        padding:  0;
       }
+        #dashboard .dashboard-short-messages .short-messages-widget .widget-data ul {
+          margin:   0;
+          padding:  0;
+        }
+          #dashboard .dashboard-short-messages .short-messages-widget .widget-data li {
+            border:           1px solid black;
+            margin-top:       4px;
+            padding:          0.5em;
+            list-style-type:  none;
+            font-size:        0.8em;
+          }

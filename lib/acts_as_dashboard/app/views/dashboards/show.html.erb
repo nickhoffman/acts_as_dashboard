@@ -11,7 +11,6 @@
     json_widgets  = '<%= @json_widgets -%>';
   });
 </script>
-<%= javascript_include_tag 'dashboard.js' %>
 
 <script type='text/javascript'>
   <%= @dashboard_js %>
@@ -22,6 +21,18 @@
     <div class='widget-template' style='display: none;'>
       <div class="widget-title"></div>
       <div class="widget-data"></div>
+    </div>
+  </div>
+  <div class='dashboard-clear'></div>
+
+  <div class='dashboard-short-messages'>
+    <div class='widget-template' style='display: none;'>
+      <div class="widget-title"></div>
+      <div class="widget-data">
+        <ul>
+          <li class='widget-data-template' style='display: none;'></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
