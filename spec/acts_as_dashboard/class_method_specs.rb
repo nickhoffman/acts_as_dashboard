@@ -74,7 +74,7 @@ describe ActsAsDashboard::ClassMethods do
     end
   end # }}}
 
-  describe '#dashboard_short_messages' do
+  describe '#dashboard_short_messages' do # {{{
     def call_dashboard_short_messages
       DashboardsController.instance_eval do
         dashboard_short_messages {}
@@ -86,10 +86,10 @@ describe ActsAsDashboard::ClassMethods do
         acts_as_dashboard
       end
 
-      @widget = ActsAsDashboard::Widget.new :type => :short_messages
+      @widget = ActsAsDashboard::ShortMessagesWidget.new
 
       @widget.stub(:instance_eval)
-      ActsAsDashboard::Widget.stub(:new).and_return @widget
+      ActsAsDashboard::ShortMessagesWidget.stub(:new).and_return @widget
     end
 
     it "raises an error if a Proc isn't provided" do
@@ -101,7 +101,7 @@ describe ActsAsDashboard::ClassMethods do
     end
 
     it 'creates a "short messages" Widget' do
-      ActsAsDashboard::Widget.should_receive(:new).with(:type => :short_messages).and_return @widget
+      ActsAsDashboard::ShortMessagesWidget.should_receive(:new).with(no_args).and_return @widget
       call_dashboard_short_messages
     end
 
@@ -114,5 +114,5 @@ describe ActsAsDashboard::ClassMethods do
       DashboardsController.dashboard_config.should_receive(:add_widget).with(@widget).and_return [@widget]
       call_dashboard_short_messages
     end
-  end
+  end # }}}
 end

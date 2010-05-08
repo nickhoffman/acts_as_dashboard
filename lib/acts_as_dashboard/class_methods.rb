@@ -29,7 +29,7 @@ module ActsAsDashboard
     def dashboard_short_messages(&block)
       raise ArgumentError, 'A Proc must be given.' unless block_given?
 
-      widget = Widget.new :type => :short_messages
+      widget = ShortMessagesWidget.new
       widget.instance_eval &block
 
       dashboard_config.add_widget widget
