@@ -128,10 +128,10 @@ describe ActsAsDashboard::ClassMethods do
         acts_as_dashboard
       end
 
-      @widget = ActsAsDashboard::Widget.new
+      @widget = ActsAsDashboard::LineGraphWidget.new
 
       @widget.stub(:instance_eval)
-      ActsAsDashboard::Widget.stub(:new).and_return @widget
+      ActsAsDashboard::LineGraphWidget.stub(:new).and_return @widget
     end
 
     it "raises an error if a Proc isn't provided" do
@@ -143,7 +143,7 @@ describe ActsAsDashboard::ClassMethods do
     end
 
     it 'creates a Line Graph Widget' do
-      ActsAsDashboard::Widget.should_receive(:new).with(:type => :line_graph).and_return @widget
+      ActsAsDashboard::LineGraphWidget.should_receive(:new).with(no_args).and_return @widget
       call_dashboard_line_graph
     end
 

@@ -38,7 +38,7 @@ module ActsAsDashboard
     def dashboard_line_graph(&block)
       raise ArgumentError, 'A Proc must be given.' unless block_given?
 
-      widget = Widget.new :type => :line_graph
+      widget = LineGraphWidget.new
       widget.instance_eval &block
 
       dashboard_config.add_widget widget

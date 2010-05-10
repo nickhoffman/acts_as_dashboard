@@ -57,3 +57,10 @@ body {
             list-style-type:  none;
             font-size:        0.8em;
           }
+
+  #dashboard .dashboard-line-graphs {
+  }
+    #dashboard .dashboard-line-graphs .line-graph-widget {
+      float:  left;
+      margin: 1em;
+    }

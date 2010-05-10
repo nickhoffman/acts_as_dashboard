@@ -5,6 +5,10 @@
 <%= javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js' %>
 <%= javascript_include_tag 'http://plugins.jquery.com/files/jquery.timers-1.2.js.txt' %>
 <%= javascript_include_tag 'js.class-2.1.4/min/core.js' %>
+<%= javascript_include_tag 'jqplot-0.9.7/jquery.jqplot.min.js' %>
+
+<%= stylesheet_link_tag 'jquery.jqplot.min.css' %>
+
 <script type='text/javascript'>
   jQuery(document).ready(function() {
     dashboard     = new Dashboard({basePath: '<%= @dashboard_path -%>'});
@@ -33,6 +37,13 @@
           <li class='widget-data-template' style='display: none;'></li>
         </ul>
       </div>
+    </div>
+  </div>
+  <div class='dashboard-clear'></div>
+
+  <div class='dashboard-line-graphs'>
+    <div class='widget-template' style='display: none;'>
+      <div class='widget-data'></div>
     </div>
   </div>
 </div>
