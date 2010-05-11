@@ -7,8 +7,9 @@ describe ActsAsDashboard::LineGraphWidget do
   describe 'initialization' do # {{{
     before :each do
       @options = {
-        :width  => '400px',
-        :height => '200px',
+        :width          => '400px',
+        :height         => '200px',
+        :line_colours =>  %w(#4bb2c5 #c5b47f),
       }
     end
 
@@ -43,43 +44,89 @@ describe ActsAsDashboard::LineGraphWidget do
       widget = ActsAsDashboard::LineGraphWidget.new
       widget.width.should == ActsAsDashboard::LineGraphWidget.send(:class_variable_get, :@@default_width)
     end
+
+    it 'sets its line colours to the given value' do
+      widget = ActsAsDashboard::LineGraphWidget.new :line_colours => @options[:line_colours]
+      widget.line_colours.should == @options[:line_colours]
+    end
+
+    describe 'when given the "line_colors" (American spelling) option' do # {{{
+      it 'copies the value to "line_colours"' do
+        options = {:line_colors => @options[:line_colours]}
+        widget = ActsAsDashboard::LineGraphWidget.new options
+        options[:line_colours].should equal @options[:line_colours]
+      end
+
+      it 'deletes the "line_colors" option' do
+        options = {:line_colors => @options[:line_colours]}
+        widget = ActsAsDashboard::LineGraphWidget.new options
+        options.should_not have_key :line_colors
+      end
+
+      it 'uses the value of "line_colors" as "line_colours"' do
+        widget = ActsAsDashboard::LineGraphWidget.new :line_colors => @options[:line_colours]
+        widget.line_colours.should == @options[:line_colours]
+      end
+    end # }}}
   end # }}}
 
-# describe 'setting its "max_data_items" attribute' do # {{{
-#   it 'raises an error when given an invalid argument' do
-#     Proc.new {ActsAsDashboard::ShortMessagesWidget.new.max_data_items = 'fail'}.should raise_error ArgumentError,
-#       'The "max_data_items" argument must be a Fixnum.'
-#   end
-#
-#   it 'is successful when given a Fixnum' do
-#     w                 = ActsAsDashboard::ShortMessagesWidget.new
-#     w.max_data_items  = 5
-#
-#     w.instance_variable_get(:@max_data_items).should equal 5
-#   end
-# end # }}}
+  describe 'setting its "line_colours" attribute' do # {{{
+    it 'raises an error when not given an Array' do
+      Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colours = 'fail'}.should raise_error ArgumentError,
+        'The "line_colours" argument must be an Array of Strings.'
+    end
 
-# describe 'attributes' do # {{{
-#   before :each do
-#     @options = {
-#       :name             => :some_counter,
-#       :title            => 'Some Counter',
-#       :block            => Proc.new {123},
-#       :update_interval  => '10s',
-#       :max_data_items   => 5,
-#     }
-#
-#     @widget = ActsAsDashboard::ShortMessagesWidget.new @options
-#   end
-#
-#   it 'are returned in a Hash' do
-#     @options.delete :block    # Remove the "block" key because AAD::Widget#attributes doesn't return it on purpose.
-#
-#     @widget.attributes.should == @options.merge(:type => :short_messages)
-#   end
-#
-#   it 'returns the "max_data_items" attribute' do
-#     @widget.max_data_items.should equal @options[:max_data_items]
-#   end
-# end # }}}
+    it 'raises an error when not given an Array of Strings' do
+      Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colours = [1]}.should raise_error ArgumentError,
+        'The "line_colours" argument must be an Array of Strings.'
+    end
+
+    it 'is successful when given an Array of Strings' do
+      line_colours    = %w(#4bb2c5 #c5b47f)
+      w                 = ActsAsDashboard::LineGraphWidget.new
+      w.line_colours  = line_colours
+
+      w.instance_variable_get(:@line_colours).should == line_colours
+    end
+  end # }}}
+
+  describe 'attributes' do # {{{
+    before :each do
+      @options = {
+        :name             => :some_counter,
+        :title            => 'Some Counter',
+        :block            => Proc.new {123},
+        :update_interval  => '10s',
+        :height           => '100px',
+        :width            => '200px',
+        :line_colours   => %w(#4bb2c5 #c5b47f),
+      }
+
+      @widget = ActsAsDashboard::LineGraphWidget.new @options
+    end
+
+    it 'are returned in a Hash' do
+      @options.delete :block    # Remove the "block" key because AAD::Widget#attributes doesn't return it on purpose.
+
+      @widget.attributes.should == @options.merge(:type => :line_graph)
+    end
+
+    it 'returns the "height" attribute' do
+      @widget.height.should equal @options[:height]
+    end
+
+    it 'returns the "width" attribute' do
+      @widget.width.should equal @options[:width]
+    end
+
+    it 'returns the "line_colours" attribute' do
+      @widget.line_colours.should equal @options[:line_colours]
+    end
+
+    describe 'when given the "line_colors" (American spelling) option' do # {{{
+      it 'returns the "line_colours" attribute' do
+        @widget.line_colors.should equal @options[:line_colours]
+      end
+    end # }}}
+  end # }}}
 end
