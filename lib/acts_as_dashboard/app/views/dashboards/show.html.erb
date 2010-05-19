@@ -20,6 +20,8 @@
       jQuery(document).ready(function() {
         dashboard     = new Dashboard({basePath: '<%= @dashboard_path -%>'});
         json_widgets  = '<%= @json_widgets -%>';
+
+        buildTheDashboard();
       });
     </script>
 
