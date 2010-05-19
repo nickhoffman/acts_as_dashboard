@@ -4,11 +4,11 @@ module ActsAsDashboard
       @json_widgets       = dashboard_config.widgets.map {|w| w.attributes}.to_json
       @dashboard_path     = '/' + self.class.to_s.underscore.sub('_controller', '').singularize + '/widgets/'
 
-      @dashboard_css_path = File.join(File.dirname(__FILE__), 'public', 'stylesheets', 'dashboard.css')
-      @dashboard_css      = File.open(@dashboard_css_path).read
-
-      @dashboard_js_path  = File.join(File.dirname(__FILE__), 'public', 'javascripts', 'dashboard.js')
-      @dashboard_js       = File.open(@dashboard_js_path).read
+#     @dashboard_css_path = File.join(File.dirname(__FILE__), 'public', 'stylesheets', 'dashboard.css')
+#     @dashboard_css      = File.open(@dashboard_css_path).read
+#
+#     @dashboard_js_path  = File.join(File.dirname(__FILE__), 'public', 'javascripts', 'dashboard.js')
+#     @dashboard_js       = File.open(@dashboard_js_path).read
 
       render :file => File.join(File.dirname(__FILE__), 'app', 'views', 'dashboards', 'show.html.erb')
     end
