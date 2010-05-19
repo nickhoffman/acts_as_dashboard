@@ -1,50 +1,59 @@
-<style type="text/css">
-  <%= @dashboard_css %>
-</style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<%= javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js' %>
-<%= javascript_include_tag 'http://plugins.jquery.com/files/jquery.timers-1.2.js.txt' %>
-<%= javascript_include_tag 'js.class-2.1.4/min/core.js' %>
-<%= javascript_include_tag 'jqplot-0.9.7/jquery.jqplot.min.js' %>
+<html>
 
-<%= stylesheet_link_tag 'jquery.jqplot.min.css' %>
+  <head>
+    <style type="text/css">
+      <%= @dashboard_css %>
+    </style>
 
-<script type='text/javascript'>
-  jQuery(document).ready(function() {
-    dashboard     = new Dashboard({basePath: '<%= @dashboard_path -%>'});
-    json_widgets  = '<%= @json_widgets -%>';
-  });
-</script>
+    <%= javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js' %>
+    <%= javascript_include_tag 'http://plugins.jquery.com/files/jquery.timers-1.2.js.txt' %>
+    <%= javascript_include_tag 'js.class-2.1.4/min/core.js' %>
+    <%= javascript_include_tag 'jqplot-0.9.7/jquery.jqplot.min.js' %>
 
-<script type='text/javascript'>
-  <%= @dashboard_js %>
-</script>
+    <%= stylesheet_link_tag 'jquery.jqplot.min.css' %>
 
-<div id='dashboard'>
-  <div class='dashboard-numbers'>
-    <div class='widget-template' style='display: none;'>
-      <div class="widget-title"></div>
-      <div class="widget-data"></div>
-    </div>
-  </div>
-  <div class='dashboard-clear'></div>
+    <script type='text/javascript'>
+      jQuery(document).ready(function() {
+        dashboard     = new Dashboard({basePath: '<%= @dashboard_path -%>'});
+        json_widgets  = '<%= @json_widgets -%>';
+      });
+    </script>
 
-  <div class='dashboard-short-messages'>
-    <div class='widget-template' style='display: none;'>
-      <div class="widget-title"></div>
-      <div class="widget-data">
-        <ul>
-          <li class='widget-data-template' style='display: none;'></li>
-        </ul>
+    <script type='text/javascript'>
+      <%= @dashboard_js %>
+    </script>
+  </head>
+
+  <body>
+    <div id='dashboard'>
+      <div class='dashboard-numbers'>
+        <div class='widget-template' style='display: none;'>
+          <div class="widget-title"></div>
+          <div class="widget-data"></div>
+        </div>
+      </div>
+      <div class='dashboard-clear'></div>
+
+      <div class='dashboard-short-messages'>
+        <div class='widget-template' style='display: none;'>
+          <div class="widget-title"></div>
+          <div class="widget-data">
+            <ul>
+              <li class='widget-data-template' style='display: none;'></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class='dashboard-clear'></div>
+
+      <div class='dashboard-line-graphs'>
+        <div class='widget-template' style='display: none;'>
+          <div class='widget-data'></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class='dashboard-clear'></div>
+  </body>
 
-  <div class='dashboard-line-graphs'>
-    <div class='widget-template' style='display: none;'>
-      <div class='widget-data'></div>
-    </div>
-  </div>
-</div>
-
+</html>
