@@ -1,6 +1,6 @@
 body {
   background-color: black;
-  color: black;
+  color: white;
 }
 
 .dashboard-clear {
@@ -37,7 +37,7 @@ body {
       margin: 1em;
     }
       #dashboard .dashboard-short-messages .short-messages-widget .widget-title {
-        border:       2px solid black;
+        border:       2px solid white;
         padding:      0.5em;
         text-align:   center;
         font-weight:  bold;
@@ -51,7 +51,7 @@ body {
           padding:  0;
         }
           #dashboard .dashboard-short-messages .short-messages-widget .widget-data li {
-            border:           1px solid black;
+            border:           1px solid white;
             margin-top:       4px;
             padding:          0.5em;
             list-style-type:  none;
