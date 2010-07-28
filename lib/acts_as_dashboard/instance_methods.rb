@@ -10,7 +10,7 @@ module ActsAsDashboard
 #     @dashboard_js_path  = File.join(File.dirname(__FILE__), 'public', 'javascripts', 'dashboard.js')
 #     @dashboard_js       = File.open(@dashboard_js_path).read
 
-      render :file => File.join(File.dirname(__FILE__), 'app', 'views', 'dashboards', 'show.html.erb')
+#     render :file => File.join(File.dirname(__FILE__), 'app', 'views', 'dashboards', 'show.html.erb')
     end
   end
 
