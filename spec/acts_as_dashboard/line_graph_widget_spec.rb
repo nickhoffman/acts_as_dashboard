@@ -10,6 +10,7 @@ describe ActsAsDashboard::LineGraphWidget do
         :width          => '400px',
         :height         => '200px',
         :line_colours   =>  %w(#4bb2c5 #c5b47f),
+        :x_axis         => :dates,
       }
     end
 
@@ -69,21 +70,31 @@ describe ActsAsDashboard::LineGraphWidget do
       end
     end # }}}
 
-    describe 'when given the "x_axis" option' do
-      it 'sets its x-axis to :dates' do
-        widget = ActsAsDashboard::LineGraphWidget.new :x_axis => :dates
-        widget.x_axis.should equal :dates
-      end
+    it 'sets its x-axis to the given value' do
+      widget = ActsAsDashboard::LineGraphWidget.new :x_axis => @options[:x_axis]
+      widget.x_axis.should == @options[:x_axis]
+    end
 
-      it 'sets its x-axis to :numbers' do
-        widget = ActsAsDashboard::LineGraphWidget.new :x_axis => :numbers
-        widget.x_axis.should equal :numbers
-      end
+    it 'sets its x-axis to the default value if no value is given' do
+      widget = ActsAsDashboard::LineGraphWidget.new
+      widget.x_axis.should == ActsAsDashboard::LineGraphWidget.send(:class_variable_get, :@@default_x_axis)
+    end
+  end # }}}
 
-      it 'raises an error for invalid values' do
-        Proc.new {ActsAsDashboard::LineGraphWidget.new :x_axis => 'asdf'}.should raise_error ArgumentError,
-          'The "x_axis" argument must be one of the following symbols: dates, numbers'
-      end
+  describe 'setting its "x_axis" attribute' do # {{{
+    it 'raises an error when given an invalid value' do
+      Proc.new {ActsAsDashboard::LineGraphWidget.new :x_axis => 'asdf'}.should raise_error ArgumentError,
+        'The "x_axis" argument must be one of the following symbols: dates, numbers'
+    end
+
+    it 'is successful when given :dates' do
+      widget = ActsAsDashboard::LineGraphWidget.new :x_axis => :dates
+      widget.x_axis.should equal :dates
+    end
+
+    it 'is successful when given :numbers' do
+      widget = ActsAsDashboard::LineGraphWidget.new :x_axis => :numbers
+      widget.x_axis.should equal :numbers
     end
   end # }}}
 
@@ -116,7 +127,8 @@ describe ActsAsDashboard::LineGraphWidget do
         :update_interval  => '10s',
         :height           => '100px',
         :width            => '200px',
-        :line_colours   => %w(#4bb2c5 #c5b47f),
+        :line_colours     => %w(#4bb2c5 #c5b47f),
+        :x_axis           => :dates,
       }
 
       @widget = ActsAsDashboard::LineGraphWidget.new @options
@@ -145,5 +157,9 @@ describe ActsAsDashboard::LineGraphWidget do
         @widget.line_colors.should equal @options[:line_colours]
       end
     end # }}}
+
+    it 'returns the "x_axis" attribute' do
+      @widget.x_axis.should equal @options[:x_axis]
+    end
   end # }}}
 end

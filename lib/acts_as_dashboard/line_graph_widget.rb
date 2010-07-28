@@ -2,6 +2,7 @@ module ActsAsDashboard
   class LineGraphWidget < ActsAsDashboard::Widget
     @@default_height  = '200px'
     @@default_width   = '400px'
+    @@default_x_axis  = :numbers
 
     attr_reader :height
     attr_reader :width
@@ -20,8 +21,8 @@ module ActsAsDashboard
       self.type         = :line_graph
       self.height       = options[:height ] || @@default_height
       self.width        = options[:width  ] || @@default_width
+      self.x_axis       = options[:x_axis ] || @@default_x_axis
       self.line_colours = options[:line_colours]  if options[:line_colours]
-      self.x_axis       = options[:x_axis]        if options[:x_axis]
 
       super
     end
@@ -60,6 +61,7 @@ module ActsAsDashboard
         :height       => @height,
         :width        => @width,
         :line_colours => @line_colours,
+        :x_axis       => @x_axis,
       })
     end
   end
