@@ -9,7 +9,7 @@ describe ActsAsDashboard::LineGraphWidget do
       @options = {
         :width          => '400px',
         :height         => '200px',
-        :line_colours =>  %w(#4bb2c5 #c5b47f),
+        :line_colours   =>  %w(#4bb2c5 #c5b47f),
       }
     end
 
@@ -68,6 +68,23 @@ describe ActsAsDashboard::LineGraphWidget do
         widget.line_colours.should == @options[:line_colours]
       end
     end # }}}
+
+    describe 'when given the "x_axis" option' do
+      it 'sets its x-axis to :dates' do
+        widget = ActsAsDashboard::LineGraphWidget.new :x_axis => :dates
+        widget.x_axis.should equal :dates
+      end
+
+      it 'sets its x-axis to :numbers' do
+        widget = ActsAsDashboard::LineGraphWidget.new :x_axis => :numbers
+        widget.x_axis.should equal :numbers
+      end
+
+      it 'raises an error for invalid values' do
+        Proc.new {ActsAsDashboard::LineGraphWidget.new :x_axis => 'asdf'}.should raise_error ArgumentError,
+          'The "x_axis" argument must be one of the following symbols: dates, numbers'
+      end
+    end
   end # }}}
 
   describe 'setting its "line_colours" attribute' do # {{{
