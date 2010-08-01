@@ -1,0 +1,23 @@
+Description:
+    The dashboard generator creates the files and configuration for a "dashboard"
+    powered by ActsAsDashboard.
+
+    The generator takes an optional controller name as its argument. The controller
+    name may be given in CamelCase or snake_case. It should not be suffixed with
+    anything. For example, if the controller is to be named "StatsController",
+    specify "Stats" rather than "StatsController".
+
+    If the optional controller name is not provided, it will default to "Dashboard",
+    and a controller named DashboardsController will be created.
+
+Example:
+    script/generate dashboard
+
+    This will create a "dashboard" named "dashboard" that can be accessed at
+    http://localhost:3000/dashboard .
+
+Example:
+    script/generate dashboard overview
+
+    This will create a "dashboard" named "overview" that can be accessed at
+    http://localhost:3000/overview .

@@ -1,0 +1,15 @@
+class <%= controller_name -%> < ApplicationController
+  # NOTE: Remove this line if you don't mind restarting the server after modifying this class.
+  include ActsAsDashboard
+
+  acts_as_dashboard
+
+  dashboard_short_messages do |dsm|
+    dsm.name            = :current_time
+    dsm.title           = 'Current Time'
+    dsm.update_interval = '10s'
+    dsm.data do
+      Time.now.to_s
+    end
+  end
+end

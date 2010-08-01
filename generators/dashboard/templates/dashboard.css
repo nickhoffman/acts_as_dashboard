@@ -1,0 +1,66 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.dashboard-clear {
+  clear: both;
+}
+
+#dashboard {
+  width: 100%;
+}
+  #dashboard .widget {
+  }
+
+  #dashboard .dashboard-numbers {
+  }
+    #dashboard .dashboard-numbers .number-widget {
+      float:      left;
+      padding:    0.5em;
+      margin:     1em;
+      text-align: center;
+    }
+      #dashboard .dashboard-numbers .number-widget .widget-title {
+        font-weight:  bold;
+        font-size:    1em;
+      }
+      #dashboard .dashboard-numbers .number-widget .widget-data {
+        font-size:    4em;
+      }
+
+  /* dashboard-short-message is not complete */
+  #dashboard .dashboard-short-messages {
+  }
+    #dashboard .dashboard-short-messages .short-messages-widget {
+      float:  left;
+      margin: 1em;
+    }
+      #dashboard .dashboard-short-messages .short-messages-widget .widget-title {
+        border:       2px solid white;
+        padding:      0.5em;
+        text-align:   center;
+        font-weight:  bold;
+      }
+      #dashboard .dashboard-short-messages .short-messages-widget .widget-data {
+        margin:   0;
+        padding:  0;
+      }
+        #dashboard .dashboard-short-messages .short-messages-widget .widget-data ul {
+          margin:   0;
+          padding:  0;
+        }
+          #dashboard .dashboard-short-messages .short-messages-widget .widget-data li {
+            border:           1px solid white;
+            margin-top:       4px;
+            padding:          0.5em;
+            list-style-type:  none;
+            font-size:        0.8em;
+          }
+
+  #dashboard .dashboard-line-graphs {
+  }
+    #dashboard .dashboard-line-graphs .line-graph-widget {
+      float:  left;
+      margin: 1em;
+    }
