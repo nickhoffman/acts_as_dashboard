@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_dashboard}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Hoffman"]
-  s.date = %q{2010-04-17}
-  s.description = %q{acts_as_dashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
+  s.date = %q{2010-08-01}
+  s.description = %q{ActsAsDashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
   s.email = %q{nick@deadorange.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -23,10 +23,112 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "acts_as_dashboard.gemspec",
+     "generators/dashboard/USAGE",
+     "generators/dashboard/dashboard_generator.rb",
+     "generators/dashboard/templates/controller.erb",
+     "generators/dashboard/templates/dashboard.css",
+     "generators/dashboard/templates/dashboard.js",
+     "generators/dashboard/templates/jqplot-0.9.7/jquery.jqplot.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.barRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.barRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.canvasAxisLabelRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.canvasAxisLabelRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.canvasAxisTickRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.canvasAxisTickRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.canvasTextRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.canvasTextRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.categoryAxisRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.categoryAxisRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.cursor.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.cursor.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.dateAxisRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.dateAxisRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.dragable.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.dragable.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.highlighter.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.highlighter.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.logAxisRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.logAxisRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.mekkoAxisRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.mekkoAxisRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.mekkoRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.mekkoRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.ohlcRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.ohlcRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.pieRenderer.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.pieRenderer.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.pointLabels.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.pointLabels.js.orig",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.pointLabels.min.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.trendline.js",
+     "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.trendline.min.js",
+     "generators/dashboard/templates/jquery.jqplot.min.css",
+     "generators/dashboard/templates/js.class-2.1.4/CHANGELOG",
+     "generators/dashboard/templates/js.class-2.1.4/MIT-LICENSE",
+     "generators/dashboard/templates/js.class-2.1.4/README",
+     "generators/dashboard/templates/js.class-2.1.4/min/command.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/comparable.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/constant_scope.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/core.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/decorator.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/enumerable.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/forwardable.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/hash.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/linked_list.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/loader.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/method_chain.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/observable.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/package.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/proxy.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/ruby.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/set.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/stack_trace.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/state.js",
+     "generators/dashboard/templates/js.class-2.1.4/min/stdlib.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/command.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/comparable.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/constant_scope.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/core.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/decorator.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/enumerable.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/forwardable.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/hash.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/linked_list.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/loader.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/method_chain.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/observable.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/package.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/proxy.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/ruby.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/set.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/stack_trace.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/state.js",
+     "generators/dashboard/templates/js.class-2.1.4/src/stdlib.js",
+     "generators/dashboard/templates/show.html.erb",
      "lib/acts_as_dashboard.rb",
+     "lib/acts_as_dashboard/app/views/dashboards/show.html.erb",
+     "lib/acts_as_dashboard/class_methods.rb",
+     "lib/acts_as_dashboard/config.rb",
+     "lib/acts_as_dashboard/instance_methods.rb",
+     "lib/acts_as_dashboard/line_graph_widget.rb",
+     "lib/acts_as_dashboard/public/javascripts/dashboard.js",
+     "lib/acts_as_dashboard/public/stylesheets/dashboard.css",
+     "lib/acts_as_dashboard/short_messages_widget.rb",
+     "lib/acts_as_dashboard/widget.rb",
+     "spec/acts_as_dashboard/class_method_specs.rb",
+     "spec/acts_as_dashboard/config_spec.rb",
+     "spec/acts_as_dashboard/instance_methods_spec.rb",
+     "spec/acts_as_dashboard/line_graph_widget_spec.rb",
+     "spec/acts_as_dashboard/short_messages_widget_spec.rb",
+     "spec/acts_as_dashboard/widget_spec.rb",
      "spec/acts_as_dashboard_spec.rb",
+     "spec/shared/widget_behaviours.rb",
      "spec/spec.opts",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "tasks/install.rake",
+     "tasks/install_javascript.rake",
+     "tasks/install_stylesheets.rake"
   ]
   s.homepage = %q{http://github.com/nickhoffman/acts_as_dashboard}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -35,7 +137,14 @@ Gem::Specification.new do |s|
   s.summary = %q{Create dashboards in Rails apps easily.}
   s.test_files = [
     "spec/acts_as_dashboard_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "spec/shared/widget_behaviours.rb",
+     "spec/acts_as_dashboard/line_graph_widget_spec.rb",
+     "spec/acts_as_dashboard/config_spec.rb",
+     "spec/acts_as_dashboard/class_method_specs.rb",
+     "spec/acts_as_dashboard/short_messages_widget_spec.rb",
+     "spec/acts_as_dashboard/instance_methods_spec.rb",
+     "spec/acts_as_dashboard/widget_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
