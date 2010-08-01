@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gemspec|
     gemspec.name        = "acts_as_dashboard"
     gemspec.summary     = %Q{Create dashboards in Rails apps easily.}
-    gemspec.description = %Q{ActsAsDashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
+    gemspec.description = %Q{acts_as_dashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
     gemspec.email       = "nick@deadorange.com"
     gemspec.homepage    = "http://github.com/nickhoffman/acts_as_dashboard"
     gemspec.authors     = ["Nick Hoffman"]
