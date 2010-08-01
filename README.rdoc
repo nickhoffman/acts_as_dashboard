@@ -2,66 +2,41 @@
 
 == Description
 
-acts_as_dashboard makes it dead easy to create dashboards in Rails apps.
+ActsAsDashboard makes it easy to create dashboards in Rails apps.
+
 
 == Usage
 
-Create a controller to use as a dashboard. Eg:
+1. Install the gem.
 
-  class DashboardsController < ApplicationController
-    acts_as_dashboard
-  end
+2. Run the generator. Eg:
+    script/generate dashboard
 
-Add some "number" widgets to the dashboard. Eg:
+3. Fire up your web server. Eg:
+    $ script/server
 
-  class DashboardsController < ApplicationController
-    acts_as_dashboard
+4. Browse to http://localhost:3000/dashboard and watch the magic!
 
-    dashboard_number do |dn|
-      dn.name            = :this_minutes_seconds
-      dn.title           = 'Seconds in this minute'
-      dn.update_interval = '5s'
-      dn.data            {Time.now.sec}
-    end
+5. Customize the dashboard's widgets in app/controllers/dashboards_controller.rb .
 
-    dashboard_number do |dn|
-      dn.name            = :load_average
-      dn.title           = 'Load average'
-      dn.update_interval = '5s'
+6. Reload the dashboard in your web browser.
 
-      dn.data do
-        uptime        = `uptime`.strip
-        load_average  = uptime.match(/load average: ([^,]+)/).captures.first
-      end
-    end
-
-Create some routes in config/routes.rb . Eg:
-
-  ActionController::Routing::Routes.draw do |map|
-    map.resource  :dashboard, :only => :show
-    map.connect   "dashboard/widgets/*path", :controller => :dashboards, :action => 'widget_data'
-  end
-
-Fire up your web server. Eg:
-  $ script/server
-
-Browse on over to http://localhost:3000/dashboard
 
 == To Do
 
-* Figure out how to configure a Rails app's Rakefile to use this gem's Rake tasks.
-* Fill in the "dashboard:install_javascript" Rake task.
-* Fill in the "dashboard:install_stylesheets" Rake task.
-* Fill in the "dashboard:install" Rake task.
-* Figure out how to create routes at run-time. (See lib/acts_as_dashboard/class_methods.rb)
-* Find a better way of embedding AAD's CSS and JavaScript files into the "show" view template. I don't like reading the files manually and passing their contents to the view template. That feels dirty.
+* Make LineGraphWidget#line_colours accept a string or array.
+* Decide if routes should added to config/routes.rb , or loaded by ActsAsDashboard using ActionController::Routing::RouteSet#add_route .
 * Make the "show" view template sexy.
 * Add more widget types.
 * If getting a new value for a widget fails, keep the last value, and mark the widget as failing.
+* Set a default value for the Widget class' "update_interval" attribute.
+* Generate the value for the Widget class' "name" attribute automatically so that the user needn't specify it.
+
 
 == Bugs
 
-* At the moment, if there's a single-quote (') in a widget's name, the JSON that is used to build the dashboard is invalid. This breaks all of the JavaScript functionality in the dashboard. This needs to be fixed in AAD::InstanceMethods#show .
+* At the moment, if there's a single-quote (') in a widget's name or title, the JSON that is used to build the dashboard is invalid. This breaks all of the JavaScript functionality in the dashboard. This needs to be fixed in AAD::InstanceMethods#show .
+
 
 == Note On Patches/Pull Requests
  
@@ -72,6 +47,7 @@ Browse on over to http://localhost:3000/dashboard
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
+
 
 == Copyright
 
