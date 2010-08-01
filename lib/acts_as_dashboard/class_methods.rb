@@ -9,12 +9,23 @@ module ActsAsDashboard
 
       controller_name = self.to_s.underscore.sub('_controller', '').singularize
 
-#     # This is commented out because I haven't figured out how to tell Rails to
-#     # actually recognize the new routes that are being created.
-#     ActionController::Routing::Routes.draw do |map|
-#       map.resource  controller_name.to_sym, :only => :show
-#       map.connect   "#{controller_name}/widgets/*path", :controller => controller_name.pluralize, :action => 'widget_data'
-#     end
+      # Create the route for the "show" action. This will be something like:
+      #   /dashboard
+      ActionController::Routing::Routes.add_named_route(
+        'dashboard',
+        controller_name,
+        :controller => controller_name.pluralize.to_sym,
+        :action     => :show
+      )
+
+      # Create the route for the "widget_data" action. This will be something like:
+      #   /dashboard/widgets/*
+      ActionController::Routing::Routes.add_named_route(
+        "#{controller_name}_widgets",
+        "#{controller_name}/widgets/*path",
+        :controller => controller_name.pluralize.to_sym,
+        :action     => :widget_data
+      )
     end
 
     def dashboard_number(&block)

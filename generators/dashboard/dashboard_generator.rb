@@ -33,7 +33,9 @@ class DashboardGenerator < Rails::Generator::Base
         logger.directory File.join('public', 'javascripts', @@jsclass_js_dir , '/')
         FileUtils.cp_r source_path(@@jsclass_js_dir ), @@public_js_dir unless options[:pretend]
 
-        add_dashboard_routes controller_name
+#       This is commented out because ActsAsDashboard::ClassMethods#acts_as_dashboard creates
+#       routes at run-time.
+#       add_dashboard_routes controller_name
       elsif options[:command] == :destroy
         app_jqplot_js_dir   = File.join(@@public_js_dir, @@jqplot_js_dir)
         app_jsclass_js_dir  = File.join(@@public_js_dir, @@jsclass_js_dir)
@@ -48,7 +50,9 @@ class DashboardGenerator < Rails::Generator::Base
           FileUtils.rm_r app_jsclass_js_dir
         end
 
-        remove_dashboard_routes controller_name
+#       This is commented out because ActsAsDashboard::ClassMethods#acts_as_dashboard creates
+#       routes at run-time.
+#       remove_dashboard_routes controller_name
       end
     end
   end

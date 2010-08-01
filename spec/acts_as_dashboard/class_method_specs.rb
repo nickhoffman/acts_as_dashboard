@@ -13,6 +13,7 @@ describe ActsAsDashboard::ClassMethods do
     before :each do
       @config = mock ActsAsDashboard::Config
       ActsAsDashboard::Config.stub(:new).and_return @config
+      ActionController::Routing::Routes.stub :add_named_route
     end
 
     it 'creates a Config object' do
@@ -29,6 +30,33 @@ describe ActsAsDashboard::ClassMethods do
       end
 
       DashboardsController.included_modules.should include ActsAsDashboard::InstanceMethods
+    end
+
+    it %Q(adds a named route for the dashboard's "show" action) do
+      ActionController::Routing::Routes.should_receive(:add_named_route).with(
+        'dashboard',
+        'dashboard',
+        :controller => :dashboards,
+        :action     => :show
+      )
+
+      class DashboardsController < ApplicationController
+        acts_as_dashboard
+      end
+    end
+
+    it %Q(adds a named route for the dashboard's "widget_data" action) do
+      ActionController::Routing::Routes.should_receive :add_named_route
+      ActionController::Routing::Routes.should_receive(:add_named_route).with(
+        'dashboard_widgets',
+        'dashboard/widgets/*path',
+        :controller => :dashboards,
+        :action     => :widget_data
+      )
+
+      class DashboardsController < ApplicationController
+        acts_as_dashboard
+      end
     end
   end # }}}
 
