@@ -1,4 +1,4 @@
-= acts_as_dashboard
+= ActsAsDashboard
 
 == Description
 
