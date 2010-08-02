@@ -5,20 +5,19 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_dashboard}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Hoffman"]
   s.date = %q{2010-08-01}
-  s.description = %q{ActsAsDashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
+  s.description = %q{acts_as_dashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
   s.email = %q{nick@deadorange.com}
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
   ]
   s.files = [
-    ".document",
-     ".gitignore",
+    ".gitignore",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -63,6 +62,24 @@ Gem::Specification.new do |s|
      "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.pointLabels.min.js",
      "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.trendline.js",
      "generators/dashboard/templates/jqplot-0.9.7/plugins/jqplot.trendline.min.js",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-anim_basic_16x16.gif",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_flat_30_cccccc_40x100.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_flat_50_5c5c5c_40x100.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_glass_20_555555_1x400.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_glass_40_0078a3_1x400.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_glass_40_ffc73d_1x400.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_gloss-wave_25_333333_500x100.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_highlight-soft_80_eeeeee_1x100.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_inset-soft_25_000000_1x100.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-bg_inset-soft_30_f58400_1x100.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-icons_222222_256x240.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-icons_4b8e0b_256x240.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-icons_a83300_256x240.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-icons_cccccc_256x240.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/images/ui-icons_ffffff_256x240.png",
+     "generators/dashboard/templates/jquery-ui/css/ui-darkness/jquery-ui-1.8.2.custom.css",
+     "generators/dashboard/templates/jquery-ui/js/jquery-1.4.2.min.js",
+     "generators/dashboard/templates/jquery-ui/js/jquery-ui-1.8.2.custom.min.js",
      "generators/dashboard/templates/jquery.jqplot.min.css",
      "generators/dashboard/templates/js.class-2.1.4/CHANGELOG",
      "generators/dashboard/templates/js.class-2.1.4/MIT-LICENSE",
