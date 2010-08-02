@@ -17,7 +17,6 @@ body {
   }
     #dashboard .dashboard-numbers .number-widget {
       float:      left;
-      padding:    0.5em;
       margin:     1em;
       text-align: center;
     }
@@ -69,3 +68,19 @@ body {
       float:  left;
       margin: 1em;
     }
+      #dashboard .dashboard-line-graphs .line-graph-widget .widget-title {
+        text-align: center;
+        border-top:     1px solid #666666;
+        border-bottom:  none;
+        border-left:    1px solid #666666;
+        border-right:   1px solid #666666;
+      }
+      #dashboard .dashboard-line-graphs .line-graph-widget .widget-data {
+        xborder:         none;
+        border-top:     none;
+        border-bottom:  1px solid #666666;
+        border-left:    1px solid #666666;
+        border-right:   1px solid #666666;
+        padding-right:  1.5em;
+      }
+
