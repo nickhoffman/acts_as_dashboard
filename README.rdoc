@@ -25,7 +25,7 @@ acts_as_dashboard makes it easy to create dashboards in Rails apps.
 == To Do
 
 * Make LineGraphWidget#line_colours accept a string or array.
-* Decide if routes should added to config/routes.rb , or loaded by acts_as_dashboard using ActionController::Routing::RouteSet#add_route .
+* Decide if routes should added to config/routes.rb , or loaded by acts_as_dashboard using ActionController::Routing::Routes#add_route . If the latter figure out how to make it work.
 * Make the "show" view template sexy.
 * Add more widget types.
 * If getting a new value for a widget fails, keep the last value, and mark the widget as failing.
