@@ -8,7 +8,10 @@ class DashboardGenerator < Rails::Generator::Base
   @@jqplot_css_file     = 'jquery.jqplot.min.css'
   @@jqplot_js_dir       = 'jqplot-0.9.7'
   @@jsclass_js_dir      = 'js.class-2.1.4'
+  @@jquery_ui_js_dir    = 'jquery-ui/js'
+  @@jquery_ui_css_dir   = 'jquery-ui/css'
   @@public_js_dir       = File.join Rails.public_path, 'javascripts/'
+  @@public_css_dir      = File.join Rails.public_path, 'stylesheets/'
 
   def manifest
     build_names args[0]
@@ -28,10 +31,18 @@ class DashboardGenerator < Rails::Generator::Base
 
       if options[:command] == :create
         logger.directory File.join('public', 'javascripts', @@jqplot_js_dir , '/')
-        FileUtils.cp_r source_path(@@jqplot_js_dir  ), @@public_js_dir unless options[:pretend]
+        FileUtils.cp_r source_path(@@jqplot_js_dir), @@public_js_dir unless options[:pretend]
 
         logger.directory File.join('public', 'javascripts', @@jsclass_js_dir , '/')
-        FileUtils.cp_r source_path(@@jsclass_js_dir ), @@public_js_dir unless options[:pretend]
+        FileUtils.cp_r source_path(@@jsclass_js_dir), @@public_js_dir unless options[:pretend]
+
+        logger.directory File.join('public', 'javascripts', @@jquery_ui_js_dir, '/')
+        m.directory File.join('public', 'javascripts', 'jquery-ui')
+        FileUtils.cp_r source_path(@@jquery_ui_js_dir), File.join(@@public_js_dir, 'jquery-ui/') unless options[:pretend]
+
+        logger.directory File.join('public', 'stylesheets', @@jquery_ui_css_dir, '/')
+        m.directory File.join('public', 'stylesheets', 'jquery-ui')
+        FileUtils.cp_r source_path(@@jquery_ui_css_dir), File.join(@@public_css_dir, 'jquery-ui/') unless options[:pretend]
 
         add_dashboard_routes controller_name
       elsif options[:command] == :destroy
