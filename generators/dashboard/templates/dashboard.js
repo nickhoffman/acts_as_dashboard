@@ -239,19 +239,22 @@ var ShortMessagesWidget = new JS.Class(DashboardWidget, {
     if (new_data == '')
       {return false;}
 
-    new_li.appendTo(this.dataDiv.find('ul'));
+    // Ensure that we don't show the same data twice in a row.
+    if (this.dataDiv.find('li:last-child').html() != new_li.html()) {
+      new_li.appendTo(this.dataDiv.find('ul'));
 
-    // Hide the first list item if we've reached the maximum number of
-    // list items to show in this widget.
-    if (this.dataItemsCount() > this.maxDataItems) {
-      var firstDataItem = this.firstDataItem();
+      // Hide the first list item if we've reached the maximum number of
+      // list items to show in this widget.
+      if (this.dataItemsCount() > this.maxDataItems) {
+        var firstDataItem = this.firstDataItem();
 
-      firstDataItem.slideUp(400, function() {
-        firstDataItem.remove();
-      });
+        firstDataItem.slideUp(400, function() {
+            firstDataItem.remove();
+            });
+      }
+
+      new_li.slideDown();
     }
-
-    new_li.slideDown();
   }
 });
 // End ShortMessagesWidget class. }}}
@@ -293,7 +296,6 @@ var LineGraphWidget = new JS.Class(DashboardWidget, {
     }
 
     this.graph = jQuery.jqplot(this.dataDiv.attr('id'), [ [] ], {
-      title:        this.title,
       seriesColors: this.seriesColours,
       axes:         {
                       xaxis: x_axis_format
