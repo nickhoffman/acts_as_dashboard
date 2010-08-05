@@ -78,8 +78,8 @@ class DashboardGenerator < Rails::Generator::Base
   
     def build_routes(controller_name) # {{{
       controller          = controller_name.downcase.gsub /controller$/, ''
-      @singleton_resource = %Q(map.resource  :#{controller}, :only => :show)
-      @widgets_route      = %Q(map.connect   '#{controller}/widgets/*path', :controller => :#{controller.pluralize}, :action => 'widget_data')
+      @singleton_resource = %Q(map.resource  :#{controller.singularize}, :only => :show)
+      @widgets_route      = %Q(map.connect   '#{controller.singularize}/widgets/*path', :controller => :#{controller.pluralize}, :action => 'widget_data')
     end # }}}
   
     def add_dashboard_routes(controller_name) # {{{
