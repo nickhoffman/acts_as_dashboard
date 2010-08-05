@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_dashboard}
-  s.version = "0.3.0"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Hoffman"]
-  s.date = %q{2010-08-01}
+  s.date = %q{2010-08-05}
   s.description = %q{acts_as_dashboard makes it easy to create dashboards in Rails apps. Very little configuration is required. Read the docs to get started.}
   s.email = %q{nick@deadorange.com}
   s.extra_rdoc_files = [
@@ -142,15 +142,12 @@ Gem::Specification.new do |s|
      "spec/acts_as_dashboard_spec.rb",
      "spec/shared/widget_behaviours.rb",
      "spec/spec.opts",
-     "spec/spec_helper.rb",
-     "tasks/install.rake",
-     "tasks/install_javascript.rake",
-     "tasks/install_stylesheets.rake"
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/nickhoffman/acts_as_dashboard}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Create dashboards in Rails apps easily.}
   s.test_files = [
     "spec/acts_as_dashboard_spec.rb",
@@ -168,7 +165,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_development_dependency(%q<rspec-rails>, [">= 1.3.2"])
     else
