@@ -8,11 +8,13 @@
     </style>
 
     <%= javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js' %>
+    <%= javascript_include_tag 'jquery-ui/js/jquery-ui-1.8.2.custom.min.js' %>
     <%= javascript_include_tag 'http://plugins.jquery.com/files/jquery.timers-1.2.js.txt' %>
     <%= javascript_include_tag 'js.class-2.1.4/min/core.js' %>
     <%= javascript_include_tag 'jqplot-0.9.7/jquery.jqplot.min.js' %>
     <%= javascript_include_tag 'dashboard' %>
 
+    <%= stylesheet_link_tag 'jquery-ui/css/ui-darkness/jquery-ui-1.8.2.custom.css' %>
     <%= stylesheet_link_tag 'dashboard' %>
     <%= stylesheet_link_tag 'jquery.jqplot.min.css' %>
 
@@ -33,20 +35,20 @@
   <body>
     <div id='dashboard'>
       <div class='dashboard-numbers'>
-        <div class='widget-template' style='display: none;'>
-          <div class="widget-title"></div>
-          <div class="widget-data"></div>
+        <div class='ui-widget widget-template' style='display: none;'>
+          <div class="ui-widget-header ui-corner-tl ui-corner-tr widget-title"></div>
+          <div class="ui-widget-content ui-corner-bl ui-corner-br"><div class="widget-data"></div></div>
         </div>
       </div>
 
       <div class='dashboard-clear'></div>
 
       <div class='dashboard-short-messages'>
-        <div class='widget-template' style='display: none;'>
-          <div class="widget-title"></div>
+        <div class='ui-widget widget-template' style='display: none;'>
+          <div class="ui-widget-header ui-corner-all widget-title"></div>
           <div class="widget-data">
             <ul>
-              <li class='widget-data-template' style='display: none;'></li>
+              <li class='ui-widget-content ui-corner-all widget-data widget-data-template' style='display: none;'></li>
             </ul>
           </div>
         </div>
@@ -55,8 +57,9 @@
       <div class='dashboard-clear'></div>
 
       <div class='dashboard-line-graphs'>
-        <div class='widget-template' style='display: none;'>
-          <div class='widget-data'></div>
+        <div class='ui-widget widget-template' style='display: none;'>
+          <div class='ui-widget-header ui-corner-tl ui-corner-tr widget-title'></div>
+          <div class='ui-widget-content ui-corner-bl ui-corner-br widget-data'></div>
         </div>
       </div>
 

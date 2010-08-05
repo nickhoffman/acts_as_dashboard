@@ -17,16 +17,22 @@ body {
   }
     #dashboard .dashboard-numbers .number-widget {
       float:      left;
-      padding:    0.5em;
       margin:     1em;
       text-align: center;
     }
       #dashboard .dashboard-numbers .number-widget .widget-title {
-        font-weight:  bold;
-        font-size:    1em;
+        padding:        0.25em;
+        border-top:     1px solid #666666;
+        border-bottom:  none;
+        border-left:    1px solid #666666;
+        border-right:   1px solid #666666;
       }
       #dashboard .dashboard-numbers .number-widget .widget-data {
-        font-size:    4em;
+        font-size:      4em;
+        border-top:     none;
+        border-bottom:  1px solid #666666;
+        border-left:    1px solid #666666;
+        border-right:   1px solid #666666;
       }
 
   /* dashboard-short-message is not complete */
@@ -37,7 +43,6 @@ body {
       margin: 1em;
     }
       #dashboard .dashboard-short-messages .short-messages-widget .widget-title {
-        border:       2px solid white;
         padding:      0.5em;
         text-align:   center;
         font-weight:  bold;
@@ -51,9 +56,8 @@ body {
           padding:  0;
         }
           #dashboard .dashboard-short-messages .short-messages-widget .widget-data li {
-            border:           1px solid white;
             margin-top:       4px;
-            padding:          0.5em;
+            padding:          0.25em;
             list-style-type:  none;
             font-size:        0.8em;
           }
@@ -64,3 +68,19 @@ body {
       float:  left;
       margin: 1em;
     }
+      #dashboard .dashboard-line-graphs .line-graph-widget .widget-title {
+        text-align: center;
+        border-top:     1px solid #666666;
+        border-bottom:  none;
+        border-left:    1px solid #666666;
+        border-right:   1px solid #666666;
+      }
+      #dashboard .dashboard-line-graphs .line-graph-widget .widget-data {
+        xborder:         none;
+        border-top:     none;
+        border-bottom:  1px solid #666666;
+        border-left:    1px solid #666666;
+        border-right:   1px solid #666666;
+        padding-right:  1.5em;
+      }
+
