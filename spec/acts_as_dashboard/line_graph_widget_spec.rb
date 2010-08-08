@@ -99,19 +99,27 @@ describe ActsAsDashboard::LineGraphWidget do
   end # }}}
 
   describe 'setting its "line_colours" attribute' do # {{{
-    it 'raises an error when not given an Array' do
-      Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colours = 'fail'}.should raise_error ArgumentError,
-        'The "line_colours" argument must be an Array of Strings.'
+    it 'raises an error when given an invalid value' do
+      Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colours = 123}.should raise_error ArgumentError,
+        'The "line_colours" argument must be a String, or an Array of Strings.'
     end
 
-    it 'raises an error when not given an Array of Strings' do
+    it 'raises an error when given an Array that contains a non-String' do
       Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colours = [1]}.should raise_error ArgumentError,
-        'The "line_colours" argument must be an Array of Strings.'
+        'The "line_colours" argument must be a String, or an Array of Strings.'
+    end
+
+    it 'is successful when given a String' do
+      line_colour     = 'green'
+      w               = ActsAsDashboard::LineGraphWidget.new
+      w.line_colours  = line_colour
+
+      w.instance_variable_get(:@line_colours).should == line_colour
     end
 
     it 'is successful when given an Array of Strings' do
       line_colours    = %w(#4bb2c5 #c5b47f)
-      w                 = ActsAsDashboard::LineGraphWidget.new
+      w               = ActsAsDashboard::LineGraphWidget.new
       w.line_colours  = line_colours
 
       w.instance_variable_get(:@line_colours).should == line_colours
