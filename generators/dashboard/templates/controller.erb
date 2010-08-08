@@ -22,7 +22,7 @@ class <%= controller_name -%> < ApplicationController
     d.name            = :random_dates_and_numbers
     d.title           = 'Random Dates and Numbers'
     d.update_interval = '15s'
-    d.line_colours    = %w(blue)
+    d.line_colours    = 'blue'
     d.x_axis          = :dates
     d.data do
       (0..10).map do
