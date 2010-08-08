@@ -98,6 +98,22 @@ describe ActsAsDashboard::LineGraphWidget do
     end
   end # }}}
 
+  describe 'settings its "line_colours" attribute via #line_colour' do # {{{
+    it 'raises an error when not given a String' do
+      Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colour = [1]}.should raise_error ArgumentError,
+        'The "line_colour" argument must be a String.'
+    end
+
+    it 'passes the String in an Array to #line_colours=' do
+      line_colour = 'green'
+      w           = ActsAsDashboard::LineGraphWidget.new
+
+      w.should_receive(:'line_colours=').with [line_colour]
+
+      w.line_colour = line_colour
+    end
+  end # }}}
+
   describe 'setting its "line_colours" attribute' do # {{{
     it 'raises an error when not given an Array' do
       Proc.new {ActsAsDashboard::LineGraphWidget.new.line_colours = 'fail'}.should raise_error ArgumentError,

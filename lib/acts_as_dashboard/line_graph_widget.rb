@@ -37,6 +37,12 @@ module ActsAsDashboard
       @width = width
     end
 
+    def line_colour=(line_colour)
+      raise ArgumentError, 'The "line_colour" argument must be a String.' unless line_colour.is_a? String
+
+      self.line_colours = [line_colour]
+    end
+
     def line_colours=(line_colours)
       raise ArgumentError, 'The "line_colours" argument must be an Array of Strings.' unless line_colours.is_a? Array
       line_colours.each {|c| raise ArgumentError, 'The "line_colours" argument must be an Array of Strings.' unless c.is_a? String}
