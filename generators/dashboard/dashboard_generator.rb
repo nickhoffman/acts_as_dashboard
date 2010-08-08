@@ -87,9 +87,11 @@ class DashboardGenerator < Rails::Generator::Base
       logger.route @widgets_route
   
       return if options[:pretend]
+
+      sentinel = Regexp.escape 'ActionController::Routing::Routes.draw do |map|'
   
-      gsub_file 'config/routes.rb', /^end$/mi do |match|
-        "\n  #{@singleton_resource}\n  #{@widgets_route}\n#{match}"
+      gsub_file 'config/routes.rb', /(#{sentinel})/mi do |match|
+        "#{match}\n  #{@singleton_resource}\n  #{@widgets_route}\n"
       end
     end # }}}
   
