@@ -31,6 +31,9 @@ acts_as_dashboard makes it easy to create dashboards in Rails apps.
 * If getting a new value for a widget fails, keep the last value, and mark the widget as failing.
 * Set a default value for the Widget class' "update_interval" attribute.
 * Generate the value for the Widget class' "name" attribute automatically so that the user needn't specify it.
+* Figure out how to get the call to includeJavaScriptFile() in LineGraphWidget to use the correct sub-directory (dashboard.js:285).
+* Fix the failing specs.
+* Fix the JavaScript problems in IE. Bloody IE...
 
 
 == Bugs
