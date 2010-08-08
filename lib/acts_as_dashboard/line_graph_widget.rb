@@ -38,12 +38,8 @@ module ActsAsDashboard
     end
 
     def line_colours=(line_colours)
-      arg_error_msg = 'The "line_colours" argument must be a String, or an Array of Strings.'
-      raise ArgumentError, arg_error_msg unless line_colours.is_a? Array or line_colours.is_a? String
-
-      if line_colours.is_a? Array
-        line_colours.each {|c| raise ArgumentError, arg_error_msg unless c.is_a? String}
-      end
+      raise ArgumentError, 'The "line_colours" argument must be an Array of Strings.' unless line_colours.is_a? Array
+      line_colours.each {|c| raise ArgumentError, 'The "line_colours" argument must be an Array of Strings.' unless c.is_a? String}
 
       @line_colours = line_colours
     end
